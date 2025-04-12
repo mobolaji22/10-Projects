@@ -12,56 +12,56 @@ const checkout = document.getElementById("checkout");
 const products = [
   {
     name: "Missy",
-    image: "./add-to-cart/img/nftavatar8.jpeg",
+    image: "./img/nftavatar8.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 15,
   },
   {
     name: "Bored Ape",
-    image: "./add-to-cart/img/nftavatar1.jpeg",
+    image: "./img/nftavatar1.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 30,
   },
   {
     name: "Jungle Ape",
-    image: "./add-to-cart/img/nftavatar2.jpeg",
+    image: "./img/nftavatar2.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 20,
   },
   {
     name: "Lina Win",
-    image: "./add-to-cart/img/nftavatar3.jpeg",
+    image: "./img/nftavatar3.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 12,
   },
   {
     name: "Ocean Maiden",
-    image: "./add-to-cart/img/nftavatar4.jpeg",
+    image: "./img/nftavatar4.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 10,
   },
   {
     name: "Victor",
-    image: "./add-to-cart/img/nftavatar5.jpeg",
+    image: "./img/nftavatar5.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 25,
   },
   {
     name: "Skater",
-    image: "./add-to-cart/img/nftavatar6.jpeg",
+    image: "./img/nftavatar6.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 8,
   },
   {
     name: "Bored Dude",
-    image: "./add-to-cart/img/nftavatar7.jpeg",
+    image: "./img/nftavatar7.jpeg",
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
     quo.`,
     price: 22,
@@ -89,7 +89,7 @@ function storeItems() {
             <p class="description">${product.description}</p>
             <span>$<p class="price">${product.price}</p></span>
         <button class="cartbtn">Add to Cart<img
-        src="/add-to-cart/img/add_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg"
+        src="./img/add_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg"
         alt=""
       /></button>
         `;
