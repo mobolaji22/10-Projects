@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Text Editor</title>
+    <style>
+      #editor {
+        height: 300px;
+        width: 500px;
+        border: 1px solid black;
+        padding: 10px;
+        overflow: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="editor" contenteditable="true">
+      This is a simple text editor. Try editing this text.
+    </div>
+    <button onclick="write()">Write</button>
+    <button onclick="increaseFontSize()">Increase Font Size</button>
+    <button onclick="reduceFontSize()">Reduce Font Size</button>
+    <button onclick="saveContentToLocal()">Save</button>
+    <button onclick="loadContentFromLocal()">Load</button>
+    <button onclick="saveContentToFile()">Download</button>
+    <button onclick="undo()">Undo</button>
+    <button onclick="redo()">Redo</button>
+    <script>
+      function increaseFontSize() {
+        var editor = document.getElementById("editor");
+        var computedStyle = window.getComputedStyle(editor);
+        var fontSize;
+
+        if (computedStyle && computedStyle.getPropertyValue("font-size")) {
+          fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
+        } else {
+          fontSize = 16; // Default font size
+        }
+
+        editor.style.fontSize = fontSize + 1 + "px";
+      }
+      function reduceFontSize() {
+        var editor = document.getElementById("editor");
+        var computedStyle = window.getComputedStyle(editor);
+        var fontSize;
+
+        if (computedStyle && computedStyle.getPropertyValue("font-size")) {
+          fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
+        } else {
+          fontSize = 16; // Default font size
+        }
+
+        editor.style.fontSize = fontSize - 1 + "px";
+      }
+      function saveContentToFile() {
+        var editor = document.getElementById("editor");
+        var textToSave = editor.innerHTML;
+        var blob = new Blob([textToSave], { type: "text/plain" });
+        var anchor = document.createElement("a");
+
+        anchor.download = "savedContent.txt";
+        anchor.href = (window.webkitURL || window.URL).createObjectURL(blob);
+        anchor.dataset.downloadurl = [
+          "text/plain",
+          anchor.download,
+          anchor.href,
+        ].join(":");
+        anchor.click();
+      }
+
+      function saveContentToLocal() {
+        var editor = document.getElementById("editor");
+        var textToSave = editor.innerHTML;
+        localStorage.setItem("savedContent", textToSave);
+      }
+
+      function loadContentFromLocal() {
+        var savedContent = localStorage.getItem("savedContent");
+        if (savedContent) {
+          var editor = document.getElementById("editor");
+          editor.innerHTML = savedContent;
+        }
+      }
+      var undoStack = [];
+      var redoStack = [];
+      //   function undo() {
+      //     var editor = document.getElementById("editor");
+      //     undoStack.push(editor.innerHTML);
+      //     editor.innerHTML = redoStack.pop();
+      //   }
+      //   function redo() {
+      //     var editor = document.getElementById("editor");
+      //     redoStack.push(editor.innerHTML);
+      //     editor.innerHTML = undoStack.pop();
+      //   }
+
+      function write(str) {
+        var editor = document.getElementById("editor");
+        editor.innerHTML += str;
+        undoStack.push(str);
+        redoStack = []; // clear redoStack whenever new write operation is performed
+      }
+
+      function undo() {
+        if (undoStack.length > 0) {
+          var lastAction = undoStack.pop();
+          redoStack.push(lastAction);
+          var editor = document.getElementById("editor");
+          editor.innerHTML = editor.innerHTML.slice(0, -lastAction.length); // remove last string
+        }
+      }
+
+      function redo() {
+        if (redoStack.length > 0) {
+          var lastUndoneAction = redoStack.pop();
+          undoStack.push(lastUndoneAction);
+          var editor = document.getElementById("editor");
+          editor.innerHTML += lastUndoneAction; // add last undone string
+        }
+      }
+    </script>
+  </body>
+</html>

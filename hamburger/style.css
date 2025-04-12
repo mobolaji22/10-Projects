@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 62.5%;
+}
+ul,
+a {
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.8rem;
+  max-width: 1024px;
+  min-height: 100vh;
+}
+/* hamburger */
+.hamburger {
+  display: inline-block;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.hamburger.active {
+  transform: translateX(12rem);
+}
+.bar1,
+.bar2,
+.bar3 {
+  width: 25px;
+  height: 4px;
+  background-color: rebeccapurple;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+.change .bar1 {
+  transform: translate(0, 8px) rotate(-45deg);
+}
+.change .bar2 {
+  opacity: 0;
+}
+.change .bar3 {
+  transform: translate(0, -8px) rotate(45deg);
+}
+/* menu */
+#menu {
+  background-color: rebeccapurple;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  padding: 1rem 3rem;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+#menu.active {
+  transform: translateX(0);
+}
+li{
+    margin: 2rem 0;
+}
+a {
+  color: #fff;
+}

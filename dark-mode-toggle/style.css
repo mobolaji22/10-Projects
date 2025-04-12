@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 62.5%;
+}
+ul, a, button, input, select, textarea{
+    list-style: none;
+    text-decoration: none;
+    font-family: inherit;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.6rem;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5rem;
+    transition: background .3s linear, color .3s linear;
+}
+body.dark{
+    background-color: #1f1f1f;
+    color: #fff;
+}
+.toggle{
+    background-color: #1f1f1f;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    transition: background .3s linear;
+}
+body.dark .toggle{
+    background-color: #fff;
+}
